@@ -1,0 +1,23 @@
+{
+  "name": "g7-total",
+  "version": "1.0.4",
+  "description": "g7-total based element-ui",
+  "main": "g7/index.js",
+  "scripts": {
+    "test": "no"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wanghes/g7-total.git"
+  },
+  "keywords": [
+    "g7",
+    "elementbase"
+  ],
+  "author": "wanghes guoguanrong123 hualiwa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wanghes/g7-total/issues"
+  },
+  "homepage": "https://github.com/wanghes/g7-total#readme"
+}
