@@ -22,8 +22,6 @@
 </template>
 
 <script>
-    import { Table, Pagination, TableColumn } from "g7s-element";
-
     export default {
         name: 'g7Table',
         data() {
@@ -61,7 +59,6 @@
                 this.$emit('handleSelectionChange', val);
             },
             handleSelectionRow(row) {
-                debugger;
                 this.$refs.multipleTable.toggleRowSelection(row);
             },
             handleSizeChange(val) {
@@ -73,11 +70,6 @@
                 this.$emit('handleCurrentChange', val);
             },
         },
-        components: {
-            [Table.name]: Table,
-            [Pagination.name]: Pagination,
-            [TableColumn.name]: TableColumn
-        }
     };
 </script>
 

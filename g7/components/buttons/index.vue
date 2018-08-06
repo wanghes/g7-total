@@ -18,8 +18,6 @@
 </template>
 
 <script>
-    import  { Tooltip, Button }  from "g7s-element";
-    
     export default {
         name: 'g7Buttons',
         data() {
@@ -37,10 +35,6 @@
             handleClick(item) {
                 this.$emit(item.handle);
             },
-        },
-        components: {
-            [Tooltip.name]: Tooltip,
-            [Button.name]: Button
         }
     };
 </script>

@@ -3,13 +3,13 @@
         <template v-for="item in items">
             <router-link v-if="noSubs(item)" :to="joinPath(item)" :key="item.name">
                 <el-menu-item :index="item.index">
-                    <i :class="item.icon"></i>
+                    <g7-svg :type="item.icon" class="g7_svg_icon"></g7-svg>
                     <span slot="title">{{ item.name }}</span>
                 </el-menu-item>
             </router-link>
             <el-submenu v-else :index="item.index" :key="item.name">
                 <template slot="title">
-                    <i :class="item.icon"></i>
+                    <g7-svg v-if="item.icon" :type="item.icon" class="g7_svg_icon"></g7-svg>
                     <span slot="title">{{ item.name }}</span>
                 </template>
 
@@ -28,7 +28,7 @@
                         <template v-if="directPath(child)">
                             <router-link :to="joinPath(child)" :key="child.name">
                                 <el-menu-item :index="child.index">
-                                    <i :class="child.icon"></i>
+                                    <g7-svg :type="false" class="g7_svg_icon"></g7-svg>
                                     <span slot="title">{{ child.name }}</span>
                                 </el-menu-item>
                             </router-link>
@@ -36,10 +36,10 @@
                         <template v-else>
                             <el-menu-item :index="child.index" class="el-menu-item-alink">
                                 <a :href="joinPath(child)">
-                                <i :class="child.icon"></i>
-                                <span slot="title">
-                                    {{ child.name }}
-                                </span>
+                                    <g7-svg v-if="false" :type="child.icon" class="g7_svg_icon"></g7-svg>    
+                                    <span slot="title">
+                                        {{ child.name }}
+                                    </span>
                                 </a>
                             </el-menu-item>
                         </template>
@@ -51,8 +51,6 @@
 </template>
 
 <script>
-    import { Submenu, MenuItem } from "g7s-element";
-
     export default {
         name: 'g7Menu',
         data() {
@@ -100,14 +98,13 @@
                 return this.env === 'development';
             },
         },
-        components: {
-            [MenuItem.name]: MenuItem,
-            [Submenu.name]: Submenu
-        }
     };
 </script>
 
 <style scoped>
+.g7_svg_icon{
+    width:16px; height: 16px; color: #BEBEBE; position: relative; top: 2px;
+}
 .el-menu-item-alink{
     padding-left: 0 !important;
     padding-right: 0 !important;

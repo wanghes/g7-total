@@ -1,7 +1,7 @@
 <template>
     <svg class="icon" aria-hidden="true">
         {{type}}
-        <use :xlink:href="'#' + type" style="color: #E10032"></use>
+        <use :xlink:href="'#' + type"></use>
     </svg>
 </template>
 

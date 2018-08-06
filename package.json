@@ -1,6 +1,6 @@
 {
   "name": "g7-total",
-  "version": "1.0.4",
+  "version": "1.0.27",
   "description": "g7-total based element-ui",
   "main": "g7/index.js",
   "scripts": {
