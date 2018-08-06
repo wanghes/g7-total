@@ -2,13 +2,13 @@
     <div class="list-content">
         <div class="list-wrap" >
             <div class="table-wrapper" style="display: flex; flex-direction: column;">
-                <el-table border ref="multipleTable" tooltip-effect="dark" :data="tableDatas" :default-sort = "{prop: 'date', order: 'descending'}" style="width: 100%; flex:1;" height="90%" @selection-change="handleSelectionChange" @row-click="handleSelectionRow">
+                <el-table border ref="multipleTable" tooltip-effect="dark" :data="tableDatas" :default-sort = "{prop: 'date', order: 'descending'}" style="width: 100%; flex:1;" height="90%" @selection-change="handleSelectionChange" @row-click="handleSelectionRow" @cell-click="handleColumnClick">
                     <el-table-column fixed type="selection" width="35">
                     </el-table-column>
                     <el-table-column sortable :prop="item.fieldName" :key="index" :label="item.title" :min-width="item.width" v-for="(item,index) in tableHeaderDatas" show-overflow-tooltip>
-                        <template slot-scope="scope">
+                        <template slot-scope="scope" >
                             <!--<el-tag v-if="item.fieldName == 'status'" :type="scope.row.status === 1 ? 'success' : 'danger'" close-transition>{{scope.row.status | statusFilter}}</el-tag>-->
-                            <span >{{scope.row[item.fieldName]}}</span>
+                            <span :style="{'color': item.color ? item.color : ''}" >{{scope.row[item.fieldName]}}</span>
                         </template>
                     </el-table-column>
                 </el-table>
@@ -69,6 +69,10 @@
                 console.log(`当前页: ${val}`);
                 this.$emit('handleCurrentChange', val);
             },
+            // 当某个单元格被点击
+            handleColumnClick(column, event) {
+                this.$emit('handleColumnClick', column, event);
+            }
         },
     };
 </script>
@@ -76,5 +80,6 @@
 <style scoped>
     .table-wrapper {
         height: 100%;
+        cursor: pointer;
     }
 </style>
