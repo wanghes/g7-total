@@ -7,8 +7,7 @@
                     </el-table-column>
                     <el-table-column sortable :prop="item.fieldName" :key="index" :label="item.title" :min-width="item.width" v-for="(item,index) in tableHeaderDatas" show-overflow-tooltip>
                         <template slot-scope="scope" >
-                            <!--<el-tag v-if="item.fieldName == 'status'" :type="scope.row.status === 1 ? 'success' : 'danger'" close-transition>{{scope.row.status | statusFilter}}</el-tag>-->
-                            <span :style="{'color': item.color ? item.color : ''}" >{{scope.row[item.fieldName]}}</span>
+                            <t-render :row="scope.row" :index="index" :col="item"></t-render>
                         </template>
                     </el-table-column>
                 </el-table>
@@ -24,6 +23,46 @@
 <script>
     export default {
         name: 'g7Table',
+        components: {
+            // tRender组件渲染
+            tRender: {
+              functional: true,
+              /**
+               * @param {row} obj 行数据
+               * @param {index} number 行索引
+               * @param {col} obj 列属性
+               */
+              props: ['row','index','col'],
+              render(h,ctx) {
+                var child
+                var {col} = ctx.props
+                if(col.render){
+                    var view = col.render(h,ctx.props)
+                    view = (
+                      <div class="hover">
+                        {view}
+                      </div>
+                    )
+                    child = [view]
+                }else{
+                  var childText = eval(`ctx.props.row.${col.fieldName}`);
+                  //如果需要过滤数据请写filter函数;
+                  if(col.filter) {
+                    childText = col.filter(childText)
+                  }
+                  child =childText
+                }
+                var tdclass = col.class || []
+                return h(
+                  'span',
+                  {
+                    class: [...tdclass]
+                  },
+                  child
+                )
+              }
+            },
+        },        
         data() {
             return {
             };
