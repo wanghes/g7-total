@@ -7,8 +7,6 @@
 </template>
 
 <script>
-    import { Steps } from 'g7s-element';
-
     export default {
         name: 'g7Steps',
         props: {
@@ -33,9 +31,6 @@
         },
         methods: {
         },
-        components: {
-            [Steps.name]: Steps,
-        }
     };
 </script>
 
