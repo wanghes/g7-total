@@ -28,7 +28,7 @@
                         <template v-if="directPath(child)">
                             <router-link :to="joinPath(child)" :key="child.name">
                                 <el-menu-item :index="child.index">
-                                    <g7-svg :type="false" class="g7_svg_icon"></g7-svg>
+                                    <g7-svg :type="child.icon" class="g7_svg_icon"></g7-svg>
                                     <span slot="title">{{ child.name }}</span>
                                 </el-menu-item>
                             </router-link>
