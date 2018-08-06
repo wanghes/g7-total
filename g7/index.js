@@ -6,6 +6,7 @@ import Buttons from './components/buttons';
 import Table from './components/table';
 import SearchBox from './components/SearchBox';
 import directives from './directives';
+import Steps from './components/Steps'; // 步骤条
 
 const components = [
     Svg,
@@ -14,6 +15,7 @@ const components = [
     Buttons,
     Table,
     SearchBox,
+    Steps,
 ];
 
 const install = (Vue) => {
